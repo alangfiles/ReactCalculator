@@ -1,5 +1,26 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: monospace;
+  font-size: 30px;
+}
+
+
+.button-row{
+  display:flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
+.number-button {
+  
+  padding: 8px;
+  border: solid 1px #ccc;
+}
+
+.calculator-display {
+  border: solid 1px #1c1c1c;
+  width: 133px;
+  text-align:right;
+  padding: 1px 5px;
 }
