@@ -12,6 +12,6 @@ export const CalculatorButton = ({value, clickOperation}) => {
 }
 
 CalculatorButton.propTypes = {
-    value: PropTypes.string,
+    value: PropTypes.any,
     clickOperation: PropTypes.func,
   };
