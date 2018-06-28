@@ -3,9 +3,9 @@ import PropTypes from "prop-types";
 
 
 
-export const CalculatorButton = ({value, clickOperation}) => {
+export const CalculatorButton = ({value, clickOperation, className}) => {
   return (
-    <span className="number-button" onClick={()=>clickOperation(value)}>
+    <span className={className} onClick={()=>clickOperation(value)}>
     {value}
     </span>
   )
@@ -14,4 +14,5 @@ export const CalculatorButton = ({value, clickOperation}) => {
 CalculatorButton.propTypes = {
     value: PropTypes.any,
     clickOperation: PropTypes.func,
+    className: PropTypes.string
   };

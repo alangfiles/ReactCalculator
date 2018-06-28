@@ -5,6 +5,16 @@ body {
   font-size: 30px;
 }
 
+.calculator-wrapper {
+  display:flex;
+  justify-content: center;
+}
+
+.calculator {
+  margin: 20px;
+  padding: 20px;
+  border: solid 1px black;
+}
 
 .button-row{
   display:flex;
@@ -12,10 +22,19 @@ body {
   margin: 0 auto;
 }
 
-.number-button {
-  
+.btn { 
   padding: 8px;
-  border: solid 1px #ccc;
+  border: solid 1px #444;
+}
+.number-button {
+  background-color: #eee;
+}
+
+.operation-button {
+  background-color: lightyellow;
+}
+.clear-button {
+  background-color: lightcoral;
 }
 
 .calculator-display {
@@ -23,4 +42,6 @@ body {
   width: 133px;
   text-align:right;
   padding: 1px 5px;
+  height: 30px;
+  margin-bottom: 10px;
 }
