@@ -16,6 +16,17 @@ body {
   border: solid 1px black;
 }
 
+
+
+.calculator-display {
+  border: solid 1px #1c1c1c;
+  width: 133px;
+  text-align:right;
+  padding: 1px 5px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
 .button-row{
   display:flex;
   flex-direction: row;
@@ -37,11 +48,3 @@ body {
   background-color: lightcoral;
 }
 
-.calculator-display {
-  border: solid 1px #1c1c1c;
-  width: 133px;
-  text-align:right;
-  padding: 1px 5px;
-  height: 30px;
-  margin-bottom: 10px;
-}

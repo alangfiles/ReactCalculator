@@ -9,17 +9,17 @@ class App extends Component {
       registerTwo: 0,
       operation: null,
       display: 0,
-      readyForReset: false
+      applyLastOperation: false
     };
   }
 
 
   numberButtonPressed = (value) => {
-    if (this.state.readyForReset) {
+    if (this.state.applyLastOperation) {
       this.setState({
         registerOne: value,
         display: value,
-        readyForReset: false,
+        applyLastOperation: false,
         registerTwo: 0,
         operation: null
       })
@@ -27,32 +27,35 @@ class App extends Component {
     }
 
     if (!this.state.operation) {
-      let newValue = (this.state.registerOne * 10) + value;
 
-      if (newValue > Number.MAX_SAFE_INTEGER) {
-        newValue = 0;
-      }
-
+      const newValue = this.pushNewValueToNumber(this.state.registerOne, value);
       this.setState({ registerOne: newValue, display: newValue })
     } else {
-      let newValue = (this.state.registerTwo * 10) + value;
-
-      if (newValue > Number.MAX_SAFE_INTEGER) {
-        newValue = 0;
-      }
-
+      
+      const newValue = this.pushNewValueToNumber(this.state.registerTwo, value);
       this.setState({ registerTwo: newValue, display: newValue })
     }
 
   }
 
+  pushNewValueToNumber = (register, value) => {
+    let newValue = (register * 10) + value;
+
+      if (newValue > Number.MAX_SAFE_INTEGER || newValue < Number.MIN_SAFE_INTEGER) {
+        newValue = 0;
+      }
+
+      return newValue;
+  }
+
+
   operationButtonPressed = (value) => {
 
-    if (this.state.operation) {
+    if (this.state.operation && !this.state.applyLastOperation) { 
       this.equalsPressed();
     }
 
-    this.setState({ operation: value, registerTwo: 0, readyForReset: false });
+    this.setState({ operation: value, registerTwo: 0, applyLastOperation: false });
 
   }
 
@@ -61,6 +64,10 @@ class App extends Component {
   }
 
   equalsPressed = () => {
+
+    if(!this.state.operation) {
+      return;
+    }
 
     let result;
 
@@ -72,7 +79,7 @@ class App extends Component {
       result = this.state.registerOne - this.state.registerTwo;
     }
 
-    this.setState({ display: result, registerOne: result, readyForReset: true })
+    this.setState({ display: result, registerOne: result, applyLastOperation: true })
 
   }
 
